@@ -1,6 +1,10 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using Sitecore.ContentSearch;
+using System.Net;
+using System;
+using Sitecore.Diagnostics;
 
 namespace SXV.Foundation.ConfigValidator.Utilities
 {
@@ -11,36 +15,105 @@ namespace SXV.Foundation.ConfigValidator.Utilities
 
         public static string GetConnectionString(string connectionStringName)
         {
-            if (Sitecore.Configuration.Settings.ConnectionStringExists(connectionStringName))
-                return Sitecore.Configuration.Settings.GetConnectionString(connectionStringName);
+            try
+            {
+                if (Sitecore.Configuration.Settings.ConnectionStringExists(connectionStringName))
+                    return Sitecore.Configuration.Settings.GetConnectionString(connectionStringName);
 
-            return string.Empty;
+                return string.Empty;
+            }
+            catch (Exception e)
+            {
+                Log.Error("The following Exception was raised : ", e, "ExperienceValidator");
+                return string.Empty;
+            }
         }
 
         public static List<string> GetEnabledDisabledConfigs(string[] configFolders, ConfigState configState)
         {
-            if (configFolders.Length > 0)
+            try
             {
-                var configFilePaths = new List<string>();
-
-                foreach (var configFolder in configFolders)
+                if (configFolders.Length > 0)
                 {
-                    var folderPath = $"{AppConfigFolder}/{configFolder}";
-                    string[] filePaths = Directory.GetFiles(folderPath);
-                    if (filePaths.Length > 0)
-                        configFilePaths.AddRange(filePaths);
+                    var configFilePaths = new List<string>();
+
+                    foreach (var configFolder in configFolders)
+                    {
+                        var folderPath = $"{AppConfigFolder}/{configFolder}";
+                        string[] filePaths = Directory.GetFiles(folderPath);
+                        if (filePaths.Length > 0)
+                            configFilePaths.AddRange(filePaths);
+                    }
+
+                    if (configFilePaths.Count > 0)
+                    {
+                        if (configState == ConfigState.Enabled)
+                            return configFilePaths.Where(x => Path.GetExtension(x).ToLower() == FileExtension).ToList();
+                        else
+                            return configFilePaths.Where(x => Path.GetExtension(x).ToLower() != FileExtension).ToList();
+                    }
                 }
 
-                if (configFilePaths.Count > 0)
-                {
-                    if (configState == ConfigState.Enabled)
-                        return configFilePaths.Where(x => Path.GetExtension(x).ToLower() == FileExtension).ToList();
-                    else
-                        return configFilePaths.Where(x => Path.GetExtension(x).ToLower() != FileExtension).ToList();
-                }
+                return null;
             }
+            catch (Exception e)
+            {
+                Log.Error("The following Exception was raised : ", e, "ExperienceValidator");
+                return null;
+            }
+        }
 
-            return null;
+        public static bool ValidateSuccessRequest(string url)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                var statusCode = response.StatusCode;
+                response.Close();
+
+                if (statusCode == HttpStatusCode.OK)
+                    return true;
+
+                return false;
+
+            }
+            catch (WebException e)
+            {
+                Log.Error("The following Exception was raised : ", e, "ExperienceValidator");
+                return false;
+            }
+            catch (Exception e)
+            {
+                Log.Error("The following Exception was raised : ", e, "ExperienceValidator");
+                return false;
+            }
+        }
+
+        public static IEnumerable<ISearchIndex> GetIndex()
+        {
+            try
+            {
+                return ContentSearchManager.Indexes;
+            }
+            catch (Exception e)
+            {
+                Log.Error("The following Exception was raised : ", e, "ExperienceValidator");
+                return null;
+            }
+        }
+
+        public static bool IsGlobalAsaxFileExist()
+        {
+            try
+            {
+                return File.Exists("/Global.asax");
+            }
+            catch (Exception e)
+            {
+                Log.Error("The following Exception was raised : ", e, "ExperienceValidator");
+                return false;
+            }
         }
     }
 
