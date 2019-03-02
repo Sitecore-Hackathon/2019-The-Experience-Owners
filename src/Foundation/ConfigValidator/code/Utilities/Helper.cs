@@ -11,10 +11,6 @@ namespace SXV.Foundation.ConfigValidator.Utilities
 {
     public static class Helper
     {
-        public static readonly string AppConfigFolder = @"\App_Config\Sitecore";
-        public static readonly string FileExtension = ".config";
-        public static readonly string[] IndexesToVerify = new string[] { "sitecore_marketingdefinitions_master", "sitecore_marketingdefinitions_web", "sitecore_suggested_test_index", "sitecore_testing_index", "xdb" };
-
         public static string GetConnectionString(string connectionStringName)
         {
             try
@@ -41,7 +37,7 @@ namespace SXV.Foundation.ConfigValidator.Utilities
 
                     foreach (var configFolder in configFolders)
                     {
-                        var folderPath = HttpContext.Current.Server.MapPath($"{AppConfigFolder}\\{configFolder}");
+                        var folderPath = HttpContext.Current.Server.MapPath($"{Constants.AppConfigFolder}\\{configFolder}");
 
                         string[] filePaths = Directory.GetFiles(folderPath);
                         if (filePaths.Length > 0)
@@ -51,9 +47,9 @@ namespace SXV.Foundation.ConfigValidator.Utilities
                     if (configFilePaths.Count > 0)
                     {
                         if (configState == ConfigState.Enabled)
-                            return configFilePaths.Where(x => Path.GetExtension(x).ToLower() == FileExtension).ToList();
+                            return configFilePaths.Where(x => Path.GetExtension(x).ToLower() == Constants.FileExtension).ToList();
                         else
-                            return configFilePaths.Where(x => Path.GetExtension(x).ToLower() != FileExtension).ToList();
+                            return configFilePaths.Where(x => Path.GetExtension(x).ToLower() != Constants.FileExtension).ToList();
                     }
                 }
 

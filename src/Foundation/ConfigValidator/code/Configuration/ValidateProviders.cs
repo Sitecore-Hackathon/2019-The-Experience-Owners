@@ -42,13 +42,29 @@ namespace SXV.Foundation.ConfigValidator.Configuration
             if (indexes.Count() > 0)
             {
                 var availableIndexes = new List<string>();
-                foreach (var index in Helper.IndexesToVerify)
+                foreach (var index in Constants.IndexesToVerify)
                 {
                     if (indexes.FirstOrDefault(x => x.Name.ToLower().Equals(index)) != null)
                         availableIndexes.Add(index);
                 }
+                return availableIndexes;
             }
             return null;
+        }
+
+        /// <summary>
+        /// Get Unavailable indexes
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetUnavailableIndexes()
+        {
+            var availableIndexes = GetAvailableIndexes();
+            var indexes = new List<string>();
+            foreach (var index in Constants.IndexesToVerify)
+                if (!availableIndexes.Contains(index))
+                    indexes.Add(index);
+
+            return indexes;
         }
     }
 }

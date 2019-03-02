@@ -232,6 +232,7 @@
     <Compile Include="Configuration\XdbConnectionStrings.cs" />
     <Compile Include="Configuration\XdbSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\Helper.cs" />
   </ItemGroup>
   <ItemGroup>

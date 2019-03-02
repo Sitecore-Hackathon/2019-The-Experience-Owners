@@ -87,22 +87,19 @@ namespace SXV.Feature.Validator.Models
             }
         }
 
-        public Dictionary<string, string> ConnectionStrings
+        public List<string> AvailableConnectionStrings
         {
             get
             {
-                var connectionStrings = new Dictionary<string, string>();
-                connectionStrings.Add("xdb.marketingautomation", string.IsNullOrEmpty(XdbConnectionStrings.MarketingAutomation) ? "This connection string is not provided." : XdbConnectionStrings.MarketingAutomation);
-                connectionStrings.Add("xdb.processing.pools", string.IsNullOrEmpty(XdbConnectionStrings.ProcessingPools) ? "This connection string is not provided." : XdbConnectionStrings.ProcessingPools);
-                connectionStrings.Add("xdb.referencedata", string.IsNullOrEmpty(XdbConnectionStrings.Referencedata) ? "This connection string is not provided." : XdbConnectionStrings.Referencedata);
-                connectionStrings.Add("xdb.processing.tasks", string.IsNullOrEmpty(XdbConnectionStrings.ProcessingTasks) ? "This connection string is not provided." : XdbConnectionStrings.ProcessingTasks);
-                connectionStrings.Add("xdb.marketingautomation.operations.client", string.IsNullOrEmpty(XdbConnectionStrings.MarketingAutomationOperationsClient) ? "This connection string is not provided." : XdbConnectionStrings.MarketingAutomationOperationsClient);
-                connectionStrings.Add("xdb.marketingautomation.reporting.client", string.IsNullOrEmpty(XdbConnectionStrings.MarketingAutomationReportingClient) ? "This connection string is not provided." : XdbConnectionStrings.MarketingAutomationReportingClient);
-                connectionStrings.Add("xdb.referencedata.client", string.IsNullOrEmpty(XdbConnectionStrings.ReferencedataClient) ? "This connection string is not provided." : XdbConnectionStrings.ReferencedataClient);
-                connectionStrings.Add("Reporting", string.IsNullOrEmpty(XdbConnectionStrings.Reporting) ? "This connection string is not provided." : XdbConnectionStrings.Reporting);
-                connectionStrings.Add("sitecore.reporting.client", string.IsNullOrEmpty(XdbConnectionStrings.SitecoreReportingClient) ? "This connection string is not provided." : XdbConnectionStrings.SitecoreReportingClient);
-                connectionStrings.Add("xconnect.collection", string.IsNullOrEmpty(XdbConnectionStrings.XConnectCollection) ? "This connection string is not provided." : XdbConnectionStrings.XConnectCollection);
-                return connectionStrings;
+                return XdbConnectionStrings.GetAvailableConnectionStrings();
+            }
+        }
+
+        public List<string> UnavailableConnectionStrings
+        {
+            get
+            {
+                return XdbConnectionStrings.GetUnavailableConnectionStrings();
             }
         }
 
@@ -206,13 +203,7 @@ namespace SXV.Feature.Validator.Models
         {
             get
             {
-                var availableIndexes = ValidateProviders.GetAvailableIndexes();
-                var indexes = new List<string>();
-                foreach (var index in Helper.IndexesToVerify)
-                    if (!availableIndexes.Contains(index))
-                        indexes.Add(index);
-
-                return indexes;
+                return ValidateProviders.GetUnavailableIndexes();
             }
         }
     }
