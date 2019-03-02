@@ -119,11 +119,11 @@ namespace SXV.Feature.Validator.Models
             }
         }
 
-        public string GlobalAsaxFileExist
+        public bool GlobalAsaxFileExist
         {
             get
             {
-                return Helper.IsGlobalAsaxFileExist() ? "Global.asax file exist." : "Global.asax file do not exist at website root.";
+                return Helper.IsGlobalAsaxFileExist();
             }
         }
 

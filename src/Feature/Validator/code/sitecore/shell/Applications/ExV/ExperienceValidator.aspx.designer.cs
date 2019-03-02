@@ -31,6 +31,15 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications {
         protected global::System.Web.UI.HtmlControls.HtmlButton RunConfiguration;
         
         /// <summary>
+        /// divPanelButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPanelButtons;
+        
+        /// <summary>
         /// lblxDBsettings control.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications {
         protected global::System.Web.UI.WebControls.Label lblTrackingEnabled;
         
         /// <summary>
-        /// lblxConnect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblxConnect;
-        
-        /// <summary>
         /// lblxDBLicense control.
         /// </summary>
         /// <remarks>
@@ -65,6 +65,24 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblxDBLicense;
+        
+        /// <summary>
+        /// lblDefaultDefinitionDatabase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDefaultDefinitionDatabase;
+        
+        /// <summary>
+        /// lblxConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblxConnect;
         
         /// <summary>
         /// lblDBConnectionString control.
@@ -76,39 +94,129 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications {
         protected global::System.Web.UI.WebControls.Label lblDBConnectionString;
         
         /// <summary>
-        /// lblConfigurations control.
+        /// lblUnDBConnectionString control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConfigurations;
+        protected global::System.Web.UI.WebControls.Label lblUnDBConnectionString;
         
         /// <summary>
-        /// lblSearchIndexes control.
+        /// lblXdbEnabledConfigs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchIndexes;
+        protected global::System.Web.UI.WebControls.Label lblXdbEnabledConfigs;
         
         /// <summary>
-        /// lblContentTesting control.
+        /// lblXdbDisabledConfigs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContentTesting;
+        protected global::System.Web.UI.WebControls.Label lblXdbDisabledConfigs;
         
         /// <summary>
-        /// lblMiscelleanous control.
+        /// lblTrackingEnabledConfigs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMiscelleanous;
+        protected global::System.Web.UI.WebControls.Label lblTrackingEnabledConfigs;
+        
+        /// <summary>
+        /// lblTrackingDisabledConfigs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTrackingDisabledConfigs;
+        
+        /// <summary>
+        /// lblExperienceAnalyticsEnabledConfigs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExperienceAnalyticsEnabledConfigs;
+        
+        /// <summary>
+        /// lblExperienceAnalyticsDisabledConfigs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExperienceAnalyticsDisabledConfigs;
+        
+        /// <summary>
+        /// lblSolrRunning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSolrRunning;
+        
+        /// <summary>
+        /// lblAvailableIndexes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailableIndexes;
+        
+        /// <summary>
+        /// lblUnAvailableIndexes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUnAvailableIndexes;
+        
+        /// <summary>
+        /// lblContentTestingEnabled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContentTestingEnabled;
+        
+        /// <summary>
+        /// lblContentTestingEnabledConfigs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContentTestingEnabledConfigs;
+        
+        /// <summary>
+        /// lblContentTestingDisabledConfigs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContentTestingDisabledConfigs;
+        
+        /// <summary>
+        /// lblGlobalAsax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGlobalAsax;
     }
 }
