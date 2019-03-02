@@ -32,6 +32,78 @@
                         <div class="card-body">
 
                             <button runat="server" id="RunConfiguration" class="btn btn-outline-secondary" type="button" onserverclick="RunConfiguration_Click">Run Validator</button>
+                            <br />
+                            <p>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">xDB</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Database</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Configurations</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Search Provider & Indexes</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample5">Content Testing</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample6" aria-expanded="false" aria-controls="multiCollapseExample6">Miscellaneous</button>
+                            </p>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                        <div class="card card-body">
+                                            <div class="alert alert-<%=IsxDBEnabled %>" role="alert">
+                                                <asp:Label ID="lblxDBsettings" runat="server"></asp:Label>
+                                            </div>
+                                            <div class="alert alert-<%=IsTrackingEnabled %>" role="alert">
+                                                <asp:Label ID="lblTrackingEnabled" runat="server"></asp:Label>
+                                            </div>
+                                            <asp:Label ID="lblxConnect" runat="server"></asp:Label>
+                                            <div class="alert alert-<%=IsxDBLicense %>" role="alert">
+                                            <asp:Label ID="lblxDBLicense" runat="server"></asp:Label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                        <div class="card card-body">
+                                            <asp:Label ID="lblDBConnectionString" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample3">
+                                        <div class="card card-body">
+                                            <asp:Label ID="lblConfigurations" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample4">
+                                        <div class="card card-body">
+                                            <asp:Label ID="lblSearchIndexes" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample5">
+                                        <div class="card card-body">
+                                            <asp:Label ID="lblContentTesting" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample6">
+                                        <div class="card card-body">
+                                            <asp:Label ID="lblMiscelleanous" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
