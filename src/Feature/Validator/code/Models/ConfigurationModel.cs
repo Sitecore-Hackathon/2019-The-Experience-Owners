@@ -193,5 +193,27 @@ namespace SXV.Feature.Validator.Models
                 return SitecoreConfigFiles.GetExperienceAnalyticsConfigs(ConfigState.Disabled);
             }
         }
+
+        public List<string> AvailableIndexes
+        {
+            get
+            {
+                return ValidateProviders.GetAvailableIndexes();
+            }
+        }
+
+        public List<string> UnavailableIndexes
+        {
+            get
+            {
+                var availableIndexes = ValidateProviders.GetAvailableIndexes();
+                var indexes = new List<string>();
+                foreach (var index in Helper.IndexesToVerify)
+                    if (!availableIndexes.Contains(index))
+                        indexes.Add(index);
+
+                return indexes;
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace SXV.Foundation.ConfigValidator.Utilities
     {
         public static readonly string AppConfigFolder = @"\App_Config\Sitecore";
         public static readonly string FileExtension = ".config";
+        public static readonly string[] IndexesToVerify = new string[] { "sitecore_marketingdefinitions_master", "sitecore_marketingdefinitions_web", "sitecore_suggested_test_index", "sitecore_testing_index", "xdb" };
 
         public static string GetConnectionString(string connectionStringName)
         {
@@ -92,7 +93,7 @@ namespace SXV.Foundation.ConfigValidator.Utilities
             }
         }
 
-        public static IEnumerable<ISearchIndex> GetIndex()
+        public static IEnumerable<ISearchIndex> GetAllIndexes()
         {
             try
             {
