@@ -5,12 +5,13 @@ using Sitecore.ContentSearch;
 using System.Net;
 using System;
 using Sitecore.Diagnostics;
+using System.Web;
 
 namespace SXV.Foundation.ConfigValidator.Utilities
 {
     public static class Helper
     {
-        public static readonly string AppConfigFolder = "/App_Config/Sitecore";
+        public static readonly string AppConfigFolder = @"\App_Config\Sitecore";
         public static readonly string FileExtension = ".config";
 
         public static string GetConnectionString(string connectionStringName)
@@ -39,7 +40,8 @@ namespace SXV.Foundation.ConfigValidator.Utilities
 
                     foreach (var configFolder in configFolders)
                     {
-                        var folderPath = $"{AppConfigFolder}/{configFolder}";
+                        var folderPath = HttpContext.Current.Server.MapPath($"{AppConfigFolder}\\{configFolder}");
+
                         string[] filePaths = Directory.GetFiles(folderPath);
                         if (filePaths.Length > 0)
                             configFilePaths.AddRange(filePaths);

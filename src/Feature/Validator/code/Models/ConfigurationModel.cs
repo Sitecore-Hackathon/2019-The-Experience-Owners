@@ -19,7 +19,7 @@ namespace SXV.Feature.Validator.Models
         {
             get
             {
-                return XdbSettings.HasValidLicense ? "xDB has valis license." : "There is some issue with xDB license.";
+                return XdbSettings.HasValidLicense ? "xDB has valid license." : "Issue found with xDB license.";
             }
         }
 

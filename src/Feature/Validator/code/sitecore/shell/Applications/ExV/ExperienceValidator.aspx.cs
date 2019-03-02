@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using SXV.Feature.Validator.Models;
 namespace SXV.Feature.Validator.sitecore.shell.Applications
 {
     public partial class ExperienceValidator : System.Web.UI.Page
@@ -12,6 +12,10 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        protected void RunConfiguration_Click(object sender, EventArgs e)
+        {
+            var ConfigurationModel = new ConfigurationModel();
         }
     }
 }
