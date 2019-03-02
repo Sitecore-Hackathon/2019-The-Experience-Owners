@@ -182,7 +182,9 @@
     <Content Include="App_Config\Include\Foundation\SXV.Foundation.ConfigValidator.config" />
     <Content Include="App_Config\Include\Foundation\SXV.Foundation.ConfigValidator.Serialization.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="web.config" />
+    <None Include="web.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -192,14 +194,16 @@
     <None Include="\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\SitecoreConfigFiles.cs" />
+    <Compile Include="Configuration\XdbConnectionStrings.cs" />
+    <Compile Include="Configuration\XdbSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
