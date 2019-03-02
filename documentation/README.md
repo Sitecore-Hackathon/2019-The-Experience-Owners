@@ -10,7 +10,7 @@ Install the provided package in the Sitecore instance.
 
 ## End User
 
-Mainly beneficial for marketers, content authors and developers where they can get the pre-requisites of xDB, Analytics, COntent Testing, Configurations tested if they are working fine also get the list of items which has personalization defined.
+Mainly beneficial for marketers, content authors and developers where they can get the pre-requisites of xDB, Analytics, Content Testing, Configurations tested whether they are working fine and also get the list of items which has personalization defined.
 
 ## Usage
 
@@ -18,4 +18,4 @@ Mainly beneficial for marketers, content authors and developers where they can g
 
 ## Video
 
-[![Sitecore Experience Validator](https://img.youtube.com/vi/EpNhxW4pNKk/0.jpg)](https://www.youtube.com/watch?v=EpNhxW4pNKk)
+[![Sitecore Experience Validator](https://img.youtube.com/vi/thgPhrj4REQ/0.jpg)](https://www.youtube.com/watch?v=thgPhrj4REQ)
