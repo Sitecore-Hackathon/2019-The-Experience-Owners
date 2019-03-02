@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Sitecore.Data.Items;
 using SXV.Feature.Validator.Models;
 using SXV.Foundation.ConfigValidator.Configuration;
 
@@ -71,5 +72,64 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications
 
             lblExperienceAnalyticsDisabledConfigs.Text = configurationModel.ExperienceAnalyticsDisabledConfigs != null && configurationModel.ExperienceAnalyticsDisabledConfigs.Any() ? string.Join("<br />", configurationModel.ExperienceAnalyticsDisabledConfigs) : string.Empty;
         }
+
+        protected void btnGetPersonalization_ServerClick(object sender, EventArgs e)
+        {
+            var data = new List<PersonalizationData>();
+            Sitecore.Data.Database master = Sitecore.Data.Database.GetDatabase("master");
+            var startItem = master.GetItem("/sitecore/content");
+            DeviceItem device = master.Resources.Devices["Default"];
+            foreach (var item in startItem.Axes.GetDescendants())
+            {
+                PersonalizationData details = new PersonalizationData();
+                Sitecore.Data.Fields.LayoutField layoutField = item.Fields["__renderings"];
+                List<Sitecore.Layouts.RenderingReference> renderings = layoutField.GetReferences(device) != null ? layoutField.GetReferences(device).ToList() : null;
+                if (renderings != null)
+                {
+                    Sitecore.Data.Fields.LayoutField finalLayoutField = item.Fields["__final renderings"];
+                    List<Sitecore.Layouts.RenderingReference> finalRenderings = finalLayoutField.GetReferences(device) != null ? finalLayoutField.GetReferences(device).ToList() : null;
+                    if (finalRenderings != null)
+                    {
+                        renderings.AddRange(finalRenderings);
+                        var renderingsWithPersonalization = renderings.Where(r => r.Settings.Rules.Count > 0).ToList();
+                        details.ItemName = item.Name;
+                        details.RederingDetails = new List<RenderingDetails>();
+                        if (details.ItemName != null && renderingsWithPersonalization != null && renderingsWithPersonalization.Count > 0)
+                        {
+                            foreach (var rendering in renderingsWithPersonalization)
+                            {
+                                RenderingDetails renderingDetail = new RenderingDetails();
+                                renderingDetail.RenderingID = master.GetItem(rendering.RenderingID).Paths.FullPath.ToString();
+                                renderingDetail.RenderingName = master.GetItem(rendering.RenderingID).Name;
+                                details.RederingDetails.Add(renderingDetail);
+                            }
+                        }
+                    }
+                    data.Add(details);
+                }
+                data = data.Where(x => x.RederingDetails.Count() > 0).ToList();
+            }
+            personalizedData.Text = "";
+            if (data.Count > 0)
+            {
+                foreach (var finalData in data)
+                {
+                    personalizedData.Text += "Item Name : <strong>" + finalData.ItemName + "</strong></br>";
+                    personalizedData.Text += "Renderings with Personalizations defined : </br>";
+                    foreach (var renderingData in finalData.RederingDetails)
+                    {
+                        personalizedData.Text += "Rendering - Path -" + renderingData.RenderingID + "</br>";
+                    }
+                    personalizedData.Text += "</br>";
+                }
+            }
+            else
+            {
+                personalizedData.Text += "No renderings with Personalization found";
+            }
+
+        }
+
+
     }
 }

@@ -215,47 +215,31 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button runat="server" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Generate Traffic
-                        </button>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button runat="server" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Page with Personalization
+                            </button>
 
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter page url" aria-label="Enter page url" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Hit It!</button>
-                            </div>
-                        </div>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            
+                                
+                                    <button runat="server" id="btnGetPersonalization" onserverclick="btnGetPersonalization_ServerClick" class="btn btn-outline-secondary" type="button">Get It!</button>
+                                    </div>
+                                    <div style="margin-left:10px">
+                                        <p>
+                                            <asp:Label ID="personalizedData" runat="server"></asp:Label>
+                                        </p>
+                                    </div>
+                                
+                            
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Content Testing
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter page url" aria-label="Enter page url" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Hit It!</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     </form>
 </body>
