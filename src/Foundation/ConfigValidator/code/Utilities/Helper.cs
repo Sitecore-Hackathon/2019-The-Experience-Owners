@@ -106,7 +106,7 @@ namespace SXV.Foundation.ConfigValidator.Utilities
         {
             try
             {
-                return File.Exists("/Global.asax");
+                return File.Exists(HttpContext.Current.Server.MapPath(@"\Global.asax"));
             }
             catch (Exception e)
             {

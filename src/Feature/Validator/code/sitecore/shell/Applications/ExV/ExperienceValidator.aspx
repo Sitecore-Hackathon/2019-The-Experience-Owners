@@ -30,8 +30,8 @@
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
-                            
-                                <button runat="server" ID="RunConfiguration" class="btn btn-outline-secondary" type="button" onserverclick="RunConfiguration_Click" >Run Validator</button>
+
+                            <button runat="server" id="RunConfiguration" class="btn btn-outline-secondary" type="button" onserverclick="RunConfiguration_Click">Run Validator</button>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ namespace SXV.Feature.Validator.Models
         {
             get
             {
-                return XdbSettings.HasValidLicense ? "xDB has valid license." : "Issue found with xDB license.";
+                return XdbSettings.HasValidLicense ? "xDB has valid license." : "Invalid xDB license.";
             }
         }
 
@@ -107,7 +107,7 @@ namespace SXV.Feature.Validator.Models
         {
             get
             {
-                return ValidateProviders.IsSolrRunning() ? "Solr is running." : "There is some issue with Solr server.";
+                return ValidateProviders.IsSolrRunning() ? "Solr is running." : "Cannot connect to solr or solr is not running.";
             }
         }
 
@@ -115,7 +115,7 @@ namespace SXV.Feature.Validator.Models
         {
             get
             {
-                return ValidateProviders.IsXConnectRunning() ? "xConnect site is running." : "There is some issue with xConnect site.";
+                return ValidateProviders.IsXConnectRunning() ? "xConnect site is running." : "xConnect is not running.";
             }
         }
 
@@ -123,7 +123,7 @@ namespace SXV.Feature.Validator.Models
         {
             get
             {
-                return Helper.IsGlobalAsaxFileExist() ? "Global.asax file exist." : "Global.asax file does not exist.";
+                return Helper.IsGlobalAsaxFileExist() ? "Global.asax file exist." : "Global.asax file do not exist at website root.";
             }
         }
 

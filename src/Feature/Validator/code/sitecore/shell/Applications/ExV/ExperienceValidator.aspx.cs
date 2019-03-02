@@ -16,6 +16,8 @@ namespace SXV.Feature.Validator.sitecore.shell.Applications
         protected void RunConfiguration_Click(object sender, EventArgs e)
         {
             var ConfigurationModel = new ConfigurationModel();
+
+
         }
     }
 }
