@@ -1,4 +1,6 @@
 ﻿using SXV.Foundation.ConfigValidator.Utilities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SXV.Foundation.ConfigValidator.Configuration
 {
@@ -28,6 +30,25 @@ namespace SXV.Foundation.ConfigValidator.Configuration
                 return Helper.ValidateSuccessRequest(solrUrl);
 
             return false;
+        }
+
+        /// <summary>
+        /// Get available indexes
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetAvailableIndexes()
+        {
+            var indexes = Helper.GetAllIndexes();
+            if (indexes.Count() > 0)
+            {
+                var availableIndexes = new List<string>();
+                foreach (var index in Helper.IndexesToVerify)
+                {
+                    if (indexes.FirstOrDefault(x => x.Name.ToLower().Equals(index)) != null)
+                        availableIndexes.Add(index);
+                }
+            }
+            return null;
         }
     }
 }
